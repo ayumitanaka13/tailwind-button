@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-white bg-gray-300;
+  }
+  h1 {
+    @apply text-7xl sm:text-8xl xl:text-9xl text-transparent font-bold italic;
+  }
+  h2 {
+    @apply text-3xl sm:text-4xl xl:text-5xl;
+  }
+  h3 {
+    @apply text-2xl sm:text-3xl xl:text-4xl;
+  }
+  h4 {
+    @apply text-xl sm:text-2xl xl:text-3xl;
+  }
+  h5 {
+    @apply text-lg sm:text-xl xl:text-2xl;
+  }
+  h6 {
+    @apply text-base sm:text-lg xl:text-xl;
+  }
+  p {
+    @apply text-sm sm:text-base xl:text-lg;
+  }
+  small {
+    @apply text-xs sm:text-sm xl:text-base;
+  }
+  li {
+    @apply text-xs sm:text-sm xl:text-base;
+  }
+  button {
+    @apply cursor-pointer focus:outline-none;
+  }
+}
+
+@layer components {
+  /* pages */
+  .App {
+    @apply h-screen w-screen bg-top bg-cover bg-no-repeat;
+  }
+  .Page {
+    @apply h-full w-full flex items-center justify-center;
+  }
+  /* UI component */
+  .TextInput {
+    @apply h-12 w-full bg-white bg-opacity-20 hover:bg-opacity-30 text-gray-500 placeholder-gray-300 rounded-md shadow-inner outline-none my-1 px-1;
+  }
+  .Button {
+    @apply h-12 w-full bg-white bg-opacity-20 hover:bg-opacity-30 border-t border-gray-300 rounded-md shadow outline-none my-1;
+  }
+}
