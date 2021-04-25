@@ -4,13 +4,13 @@
 
 @layer base {
   body {
-    @apply text-white bg-gray-300;
+    @apply text-white bg-green-500;
   }
   h1 {
-    @apply text-7xl sm:text-8xl xl:text-9xl text-transparent font-bold italic;
+    @apply text-7xl sm:text-8xl xl:text-9xl text-transparent;
   }
   h2 {
-    @apply text-3xl sm:text-4xl xl:text-5xl;
+    @apply text-3xl sm:text-4xl xl:text-5xl text-center;
   }
   h3 {
     @apply text-2xl sm:text-3xl xl:text-4xl;
@@ -48,9 +48,12 @@
   }
   /* UI component */
   .TextInput {
-    @apply h-12 w-full bg-white bg-opacity-20 hover:bg-opacity-30 text-gray-500 placeholder-gray-300 rounded-md shadow-inner outline-none my-1 px-1;
+    @apply h-12 w-full bg-white bg-opacity-20 hover:bg-opacity-30 text-gray-500 placeholder-gray-300 rounded-md shadow-inner outline-none my-1 px-2;
   }
   .Button {
     @apply h-12 w-full bg-white bg-opacity-20 hover:bg-opacity-30 border-t border-gray-300 rounded-md shadow outline-none my-1;
+  }
+  .Box {
+    @apply h-24 w-full flex flex-wrap items-center justify-center bg-white bg-opacity-20 hover:bg-opacity-30 rounded-md shadow-inner outline-none my-1 px-1;
   }
 }
