@@ -1,22 +1,27 @@
 import React, { useState } from "react";
 
 import ColorsData from "../components/ColorsData";
-import { ColorButton, TailwindButton } from "../components";
-import { Box } from "../components/UI";
+import { ColorBorder, ColorButton, TailwindButton } from "../components";
+import { Box, Button } from "../components/UI";
 
 const Create = () => {
   const [color, setColor] = useState("");
-  const [code, setCode] = useState("");
+  // const [color, setColor] = useState("");
 
   const getColor = (e) => {
     setColor(e.target.value);
   };
+
+  // const getBorderColor = (e) => {
+  //   set;
+  // };
+
   const getCode = (e) => {
     let copiedCode = e.target.innerText;
-    document.execCommand("Copy");
-    alert("Copied!" + copiedCode);
-    // console.log(e.target.innerText);
-    // console.dir(e.target);
+    navigator.clipboard.writeText(copiedCode);
+    alert("Copied!");
+
+    console.log(copiedCode);
   };
 
   return (
@@ -27,11 +32,30 @@ const Create = () => {
           <TailwindButton className={color} />
         </Box>
         <Box>
-          {ColorsData.map((color, index) => (
-            <div key={index}>
-              <ColorButton value={color} onClick={getColor} className={color} />
-            </div>
-          ))}
+          <div className="flex flex-wrap px-8">
+            {ColorsData.map((color, index) => (
+              <div key={index}>
+                <ColorButton
+                  value={color}
+                  onClick={getColor}
+                  className={color}
+                />
+              </div>
+            ))}
+          </div>
+        </Box>
+        <Box>
+          <div className="flex flex-wrap px-8">
+            {ColorsData.map((color, index) => (
+              <div key={index}>
+                <ColorBorder
+                  value={color}
+                  onClick={getColor}
+                  className={color}
+                />
+              </div>
+            ))}
+          </div>
         </Box>
         <Box>
           <code onClick={getCode}>

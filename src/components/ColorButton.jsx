@@ -3,9 +3,9 @@ import React from "react";
 const ColorButton = ({ onClick, className }) => {
   return (
     <button
-      value={className}
+      value={`bg-${className}`}
       onClick={onClick}
-      className={`${className} h-4 w-4 m-1`}
+      className={`bg-${className} h-4 w-4 m-1`}
     ></button>
   );
 };
