@@ -1,44 +1,71 @@
 import React, { useState } from "react";
 
-import ColorsData from "../components/ColorsData";
-import { ColorBorder, ColorButton, TailwindButton } from "../components";
-import { Box, Button } from "../components/UI";
+import {
+  BgColor,
+  BorderColor,
+  BorderWidth,
+  BorderRadius,
+  TailwindButton,
+} from "../components";
+import {
+  ColorsData,
+  BorderWidthData,
+  BorderRadiusData,
+} from "../components/data";
+import { Box } from "../components/UI";
 
 const Create = () => {
   const [color, setColor] = useState("");
-  // const [color, setColor] = useState("");
+  const [borderColor, setBorderColor] = useState("");
+  const [borderWidth, setBorderWidth] = useState("");
+  const [borderRadius, setBorderRadius] = useState("");
 
   const getColor = (e) => {
     setColor(e.target.value);
   };
-
-  // const getBorderColor = (e) => {
-  //   set;
-  // };
+  const getBorderColor = (e) => {
+    setBorderColor(e.target.value);
+  };
+  const getBorderWidth = (e) => {
+    setBorderWidth(e.target.value);
+  };
+  const getBorderRadius = (e) => {
+    setBorderRadius(e.target.value);
+  };
 
   const getCode = (e) => {
     let copiedCode = e.target.innerText;
     navigator.clipboard.writeText(copiedCode);
     alert("Copied!");
-
     console.log(copiedCode);
   };
 
   return (
     <div className="Page">
       <div className="w-5/6">
-        <h2>Create Your Original Button Component.</h2>
+        <h2 className="mb-4">Create Your Tailwind Button Component.</h2>
         <Box>
-          <TailwindButton className={color} />
+          <TailwindButton
+            className={`${color} ${borderWidth} ${borderColor} ${borderRadius}`}
+          />
         </Box>
         <Box>
           <div className="flex flex-wrap px-8">
             {ColorsData.map((color, index) => (
               <div key={index}>
-                <ColorButton
-                  value={color}
-                  onClick={getColor}
-                  className={color}
+                <BgColor value={color} onClick={getColor} className={color} />
+              </div>
+            ))}
+          </div>
+        </Box>
+        <Box>
+          <div className="flex flex-wrap px-8">
+            {BorderWidthData.map((width, index) => (
+              <div key={index}>
+                <BorderWidth
+                  value={width}
+                  onClick={getBorderWidth}
+                  className={width}
                 />
               </div>
             ))}
@@ -48,18 +75,37 @@ const Create = () => {
           <div className="flex flex-wrap px-8">
             {ColorsData.map((color, index) => (
               <div key={index}>
-                <ColorBorder
+                <BorderColor
                   value={color}
-                  onClick={getColor}
+                  onClick={getBorderColor}
                   className={color}
                 />
               </div>
             ))}
           </div>
         </Box>
+        <Box>
+          <div className="flex flex-wrap px-8">
+            {BorderRadiusData.map((radius, index) => (
+              <div key={index}>
+                <BorderRadius
+                  value={radius}
+                  onClick={getBorderRadius}
+                  className={radius}
+                />
+              </div>
+            ))}
+          </div>
+        </Box>
+
         <Box>
           <code onClick={getCode}>
-            &lt;button className="{color}"&gt;Button&lt;/button&gt;
+            export const Button = () ={"> {"}
+            <br />
+            &emsp;return {" <"}button className="{color} {borderWidth}{" "}
+            {borderColor} {borderRadius}"{">"}Button{"<"}/button{">"}
+            <br />
+            {"}"}
           </code>
         </Box>
       </div>

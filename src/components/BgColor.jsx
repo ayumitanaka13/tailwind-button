@@ -1,6 +1,6 @@
 import React from "react";
 
-const ColorButton = ({ onClick, className }) => {
+const BgColor = ({ onClick, className }) => {
   return (
     <button
       value={`bg-${className}`}
@@ -10,4 +10,4 @@ const ColorButton = ({ onClick, className }) => {
   );
 };
 
-export default ColorButton;
+export default BgColor;
