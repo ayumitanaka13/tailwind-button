@@ -35,7 +35,7 @@ const Signin = () => {
             value={email}
             required={true}
             onChange={inputEmail}
-            placeholder="Email"
+            placeholder="example@mail.com"
           />
           <TextInput
             type="password"
@@ -43,8 +43,9 @@ const Signin = () => {
             value={password}
             required={true}
             onChange={inputPassword}
-            placeholder="Password"
+            placeholder="Must be more than 6 characters"
           />
+          <div className="my-2"></div>
           <Button
             type="submit"
             value="Sign In"

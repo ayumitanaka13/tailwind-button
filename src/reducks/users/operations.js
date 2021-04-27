@@ -2,6 +2,8 @@ import { push } from "connected-react-router";
 import { signInAction, signOutAction } from "./actions";
 import { auth, db, FirebaseTimestamp } from "../../firebase/index";
 
+const usersRef = db.collection("users");
+
 export const listenAuthState = () => {
   return async (dispatch) => {
     return auth.onAuthStateChanged((user) => {
@@ -17,7 +19,6 @@ export const listenAuthState = () => {
                 isSignedIn: true,
                 uid: uid,
                 username: data.username,
-                role: data.role,
               })
             );
           });
@@ -34,27 +35,32 @@ export const signIn = (email, password) => {
       alert("Must be filled all fields.");
       return false;
     }
-    auth.signInWithEmailAndPassword(email, password).then((result) => {
-      const user = result.user;
-      if (user) {
-        const uid = user.uid;
-        db.collection("users")
-          .doc(uid)
-          .get()
-          .then((snapshot) => {
-            const data = snapshot.data();
-            dispatch(
-              signInAction({
-                isSignedIn: true,
-                uid: uid,
-                username: data.username,
-                role: data.role,
-              })
-            );
-            dispatch(push("/create"));
-          });
-      }
-    });
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        const user = result.user;
+        if (user) {
+          const uid = user.uid;
+          db.collection("users")
+            .doc(uid)
+            .get()
+            .then((snapshot) => {
+              const data = snapshot.data();
+              dispatch(
+                signInAction({
+                  isSignedIn: true,
+                  uid: uid,
+                  username: data.username,
+                })
+              );
+              dispatch(push("/create"));
+            });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("The email address and password do not match.");
+      });
   };
 };
 
@@ -84,7 +90,6 @@ export const signUp = (username, email, password, confirmPassword) => {
             uid: uid,
             username: username,
             email: email,
-            role: "user",
             created_at: timestamp,
             updated_at: timestamp,
           };
@@ -98,6 +103,9 @@ export const signUp = (username, email, password, confirmPassword) => {
       })
       .catch((err) => {
         console.log(err);
+        alert(
+          "The email address is badly formatted. Or Password should be at least 6 characters."
+        );
       });
   };
 };

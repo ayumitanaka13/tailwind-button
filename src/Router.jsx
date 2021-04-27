@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router";
 
 import Auth from "./Auth";
-import { Home, Reset, Signin, Signup, User, Create } from "./templates";
+import { Home, Reset, Signin, Signup, Create } from "./templates";
 
 const Router = () => {
   return (

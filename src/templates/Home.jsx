@@ -1,9 +1,9 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { push } from "connected-react-router";
 
 import { Button } from "../components/UI";
-import { getUserId, getUserName } from "../reducks/users/selectors";
+// import { getUserId, getUserName } from "../reducks/users/selectors";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -17,18 +17,22 @@ const Home = () => {
         <p className="text-center my-8">
           Create your own Tailwind Button Component in React.
         </p>
-        <Button
-          type="button"
-          value="Sign Up"
-          button="Sign Up"
-          onClick={() => dispatch(push("/signup"))}
-        />
-        <Button
-          type="button"
-          value="Sign In"
-          button="Sign In"
-          onClick={() => dispatch(push("/signin"))}
-        />
+        <div className="w-full flex justify-center">
+          <div className="w-full lg:w-1/2">
+            <Button
+              type="button"
+              value="Sign Up"
+              button="Sign Up"
+              onClick={() => dispatch(push("/signup"))}
+            />
+            <Button
+              type="button"
+              value="Sign In"
+              button="Sign In"
+              onClick={() => dispatch(push("/signin"))}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -1,13 +1,11 @@
 export const initialState = {
   posts: {
-    isExisted: false,
     id: "",
-    title: "",
+    code: "",
   },
   users: {
     isSignedIn: false,
     uid: "",
     username: "",
-    role: "",
   },
 };

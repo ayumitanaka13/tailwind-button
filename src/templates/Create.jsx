@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useDispatch } from "react-redux";
+
 import Clipboard from "react-clipboard.js";
 
+import { signOut } from "../reducks/users/operations";
 import {
   BgColor,
   BorderColor,
@@ -14,15 +17,17 @@ import {
   BorderWidthData,
   BorderRadiusData,
 } from "../components/data";
-import { Box, BoxSmall, CodeBox } from "../components/UI";
+import { Box, BoxSmall, Button, CodeBox } from "../components/UI";
 
 const Create = () => {
-  const [color, setColor] = useState("");
-  const [borderColor, setBorderColor] = useState("");
-  const [borderWidth, setBorderWidth] = useState("");
-  const [borderRadius, setBorderRadius] = useState("");
-  const [textColor, setTextColor] = useState("");
-  const [initialCode, setInitialCode] = useState("");
+  const dispatch = useDispatch();
+
+  const [color, setColor] = useState(""),
+    [borderColor, setBorderColor] = useState(""),
+    [borderWidth, setBorderWidth] = useState(""),
+    [borderRadius, setBorderRadius] = useState(""),
+    [textColor, setTextColor] = useState(""),
+    [initialCode, setInitialCode] = useState("");
 
   const codeRef = useRef(null);
 
@@ -33,9 +38,6 @@ const Create = () => {
         }
       `);
   }, []);
-  // useEffect(() => {
-  //   console.log(codeRef.current.textContent);
-  // }, [codeRef]);
 
   const getColor = (e) => {
     setColor(e.target.value);
@@ -53,19 +55,8 @@ const Create = () => {
     setTextColor(e.target.value);
   };
 
-  // const getCode = (e) => {
-  //   let copiedCode = e.target.innerText;
-  //   navigator.clipboard
-  //     .writeText(copiedCode)
-  //     .then((result) => console.log(result));
-  //   alert("Copied!");
-
-  //   console.log(copiedCode);
-  //   console.log(navigator.clipboard.writeText(copiedCode));
-  // };
-
   return (
-    <div className="Page">
+    <div className="Page h-full">
       <div className="w-5/6 my-16">
         <h3 className="text-center mb-8">
           Create Your Tailwind Button Component.
@@ -156,6 +147,15 @@ const Create = () => {
         ) : (
           <Clipboard data-clipboard-text={initialCode}>copy</Clipboard>
         )}
+        <Button
+          type="submit"
+          value="Sign Out"
+          button="Sign Out"
+          onClick={(e) => {
+            e.preventDefault();
+            dispatch(signOut());
+          }}
+        />
       </div>
     </div>
   );
