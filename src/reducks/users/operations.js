@@ -51,7 +51,7 @@ export const signIn = (email, password) => {
                 role: data.role,
               })
             );
-            dispatch(push("/"));
+            dispatch(push("/create"));
           });
       }
     });
@@ -92,10 +92,12 @@ export const signUp = (username, email, password, confirmPassword) => {
             .doc(uid)
             .set(userInitialData)
             .then(() => {
-              dispatch(push("/"));
+              dispatch(push("/signin"));
             });
-          dispatch(push("/signin"));
         }
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 };

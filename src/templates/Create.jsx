@@ -40,9 +40,13 @@ const Create = () => {
 
   const getCode = (e) => {
     let copiedCode = e.target.innerText;
-    navigator.clipboard.writeText(copiedCode);
+    navigator.clipboard
+      .writeText(copiedCode)
+      .then((result) => console.log(result));
     alert("Copied!");
+
     console.log(copiedCode);
+    console.log(navigator.clipboard.writeText(copiedCode));
   };
 
   return (
@@ -117,7 +121,7 @@ const Create = () => {
             ))}
           </div>
         </Box>
-        <Box></Box>
+        {/* <Box></Box> */}
         <CodeBox>
           <code onClick={getCode} className="BoxContainer">
             export const Button = () ={"> {"}

@@ -25,9 +25,9 @@ const Signin = () => {
   );
 
   return (
-    <div className="Page flex-wrap">
-      <div className="w-5/6 lg:w-1/2 bg-white bg-opacity-10 p-8 sm:p-16 rounded-lg shadow-md">
-        <h2 className="text-center">Sign In</h2>
+    <div className="Page">
+      <div className="PageContainer">
+        <h2>Sign In</h2>
         <form action="" className="w-full">
           <TextInput
             type="email"
@@ -35,7 +35,7 @@ const Signin = () => {
             value={email}
             required={true}
             onChange={inputEmail}
-            // placeholder="Email"
+            placeholder="Email"
           />
           <TextInput
             type="password"
@@ -43,13 +43,16 @@ const Signin = () => {
             value={password}
             required={true}
             onChange={inputPassword}
-            // placeholder="Password"
+            placeholder="Password"
           />
           <Button
             type="submit"
             value="Sign In"
             button="Sign In"
-            onClick={() => dispatch(signIn(email, password))}
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(signIn(email, password));
+            }}
           />
         </form>
         <p>New user?</p>

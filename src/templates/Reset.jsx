@@ -18,9 +18,9 @@ const Reset = () => {
   );
 
   return (
-    <div className="Page flex-wrap">
-      <div className="w-5/6 lg:w-1/2 bg-white bg-opacity-10 p-16 rounded-md shadow-md">
-        <h2 className="text-center border">Reset Password</h2>
+    <div className="Page">
+      <div className="w-5/6 lg:w-1/2 bg-white bg-opacity-10 p-8 sm:p-16 rounded-md shadow-md">
+        <h2 className="text-center">Reset Password</h2>
         <form action="" className="w-full">
           <TextInput
             type="email"

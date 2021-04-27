@@ -39,9 +39,9 @@ const Signup = () => {
   );
 
   return (
-    <div className="Page flex-wrap">
-      <div className="w-5/6 lg:w-1/2 border">
-        <h2 className="text-center border">Sign Up</h2>
+    <div className="Page">
+      <div className="PageContainer">
+        <h2>Sign Up</h2>
         <form action="" className="w-full">
           <TextInput
             type="text"
@@ -75,22 +75,24 @@ const Signup = () => {
             onChange={inputConfirmPassword}
             placeholder="Confirm Password"
           />
+          <div className="my-2"></div>
           <Button
             type="submit"
             value="Sign Up"
             button="Sign Up"
-            onClick={() =>
-              dispatch(signUp(username, email, password, confirmPassword))
-            }
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(signUp(username, email, password, confirmPassword));
+            }}
           />
         </form>
+        <p>Already registered?</p>
         <Button
           type="button"
           value="Sign In"
           button="Sign In"
           onClick={() => dispatch(push("/signin"))}
         />
-        <p>Already registered?</p>
       </div>
     </div>
   );
