@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import Clipboard from "react-clipboard.js";
 
 import {
   BgColor,
@@ -21,6 +22,20 @@ const Create = () => {
   const [borderWidth, setBorderWidth] = useState("");
   const [borderRadius, setBorderRadius] = useState("");
   const [textColor, setTextColor] = useState("");
+  const [initialCode, setInitialCode] = useState("");
+
+  const codeRef = useRef(null);
+
+  useEffect(() => {
+    setInitialCode(`
+        export const Button = () => { 
+          return  <button className="py-2 px-4">Button</button>
+        }
+      `);
+  }, []);
+  // useEffect(() => {
+  //   console.log(codeRef.current.textContent);
+  // }, [codeRef]);
 
   const getColor = (e) => {
     setColor(e.target.value);
@@ -38,16 +53,16 @@ const Create = () => {
     setTextColor(e.target.value);
   };
 
-  const getCode = (e) => {
-    let copiedCode = e.target.innerText;
-    navigator.clipboard
-      .writeText(copiedCode)
-      .then((result) => console.log(result));
-    alert("Copied!");
+  // const getCode = (e) => {
+  //   let copiedCode = e.target.innerText;
+  //   navigator.clipboard
+  //     .writeText(copiedCode)
+  //     .then((result) => console.log(result));
+  //   alert("Copied!");
 
-    console.log(copiedCode);
-    console.log(navigator.clipboard.writeText(copiedCode));
-  };
+  //   console.log(copiedCode);
+  //   console.log(navigator.clipboard.writeText(copiedCode));
+  // };
 
   return (
     <div className="Page">
@@ -123,16 +138,24 @@ const Create = () => {
         </Box>
         {/* <Box></Box> */}
         <CodeBox>
-          <code onClick={getCode} className="BoxContainer">
+          <code className="BoxContainer" ref={codeRef}>
             export const Button = () ={"> {"}
             <br />
             &emsp;return {" <"}button className="py-2 px-4 {color} {borderWidth}{" "}
-            {borderColor} {borderRadius} {textColor}"{">"}Button{"<"}/button
+            {borderColor} {borderRadius} {textColor}"{">"}Button
+            {"<"}/button
             {">"}
             <br />
             {"}"}
           </code>
         </CodeBox>
+        {codeRef.current ? (
+          <Clipboard data-clipboard-text={codeRef.current.innerText}>
+            copy
+          </Clipboard>
+        ) : (
+          <Clipboard data-clipboard-text={initialCode}>copy</Clipboard>
+        )}
       </div>
     </div>
   );
