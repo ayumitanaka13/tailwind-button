@@ -5,7 +5,7 @@ const BorderRadius = ({ onClick, className }) => {
     <button
       value={className}
       onClick={onClick}
-      className={`${className} h-4 w-8 mx-1 bg-white`}
+      className={`${className} h-2 lg:h-4 w-4 lg:w-8 mx-1 bg-white`}
     ></button>
   );
 };

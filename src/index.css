@@ -7,7 +7,7 @@
     @apply text-white bg-green-500;
   }
   h1 {
-    @apply text-7xl sm:text-8xl xl:text-9xl text-transparent;
+    @apply text-7xl sm:text-8xl xl:text-9xl text-transparent text-center;
   }
   h2 {
     @apply text-3xl sm:text-4xl xl:text-5xl text-center;
@@ -41,10 +41,10 @@
 @layer components {
   /* pages */
   .App {
-    @apply h-screen w-screen bg-top bg-cover bg-no-repeat;
+    @apply min-h-screen w-screen bg-top bg-cover bg-no-repeat;
   }
   .Page {
-    @apply h-full w-full flex items-center justify-center;
+    @apply h-screen w-full flex items-center justify-center;
   }
   /* UI component */
   .TextInput {
@@ -54,9 +54,15 @@
     @apply h-12 w-full bg-white bg-opacity-20 hover:bg-opacity-30 border-t border-gray-300 rounded-md shadow outline-none my-1;
   }
   .Box {
-    @apply h-24 w-full flex items-center justify-center bg-white bg-opacity-20 hover:bg-opacity-30 rounded-md shadow-inner outline-none my-1 px-1;
+    @apply h-60 sm:h-36 2xl:h-24 w-full flex items-center justify-center bg-white bg-opacity-20 hover:bg-opacity-30 rounded-md shadow-sm my-2;
+  }
+  .BoxSmall {
+    @apply h-36 2xl:h-24 w-full flex items-center justify-center bg-white bg-opacity-20 hover:bg-opacity-30 rounded-md shadow-sm my-2;
+  }
+  .CodeBox {
+    @apply h-60 sm:h-36 w-full flex items-center justify-center bg-green-500 bg-opacity-20 hover:bg-opacity-30 rounded-md shadow-inner cursor-pointer my-2;
   }
   .BoxContainer {
-    @apply flex flex-wrap justify-center px-8;
+    @apply flex flex-wrap justify-center px-4 sm:px-8;
   }
 }

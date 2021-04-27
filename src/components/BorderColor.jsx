@@ -5,7 +5,7 @@ const BorderColor = ({ onClick, className }) => {
     <button
       value={`border-${className}`}
       onClick={onClick}
-      className={`border-${className} h-2 w-4 m-1 border bg-white bg-opacity-20`}
+      className={`border-${className} h-2 w-4 m-1 border-2 bg-white bg-opacity-20`}
     ></button>
   );
 };

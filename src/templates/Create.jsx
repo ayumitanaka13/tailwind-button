@@ -13,7 +13,7 @@ import {
   BorderWidthData,
   BorderRadiusData,
 } from "../components/data";
-import { Box } from "../components/UI";
+import { Box, BoxSmall, CodeBox } from "../components/UI";
 
 const Create = () => {
   const [color, setColor] = useState("");
@@ -47,15 +47,15 @@ const Create = () => {
 
   return (
     <div className="Page">
-      <div className="w-5/6">
+      <div className="w-5/6 my-16">
         <h3 className="text-center mb-8">
           Create Your Tailwind Button Component.
         </h3>
-        <Box>
+        <BoxSmall>
           <TailwindButton
             className={`${color} ${borderWidth} ${borderColor} ${borderRadius} ${textColor}`}
           />
-        </Box>
+        </BoxSmall>
         <Box>
           <div className="BoxContainer">
             {ColorsData.map((color, index) => (
@@ -65,7 +65,7 @@ const Create = () => {
             ))}
           </div>
         </Box>
-        <Box>
+        <BoxSmall>
           <div className="BoxContainer">
             {BorderWidthData.map((width, index) => (
               <div key={index}>
@@ -77,7 +77,7 @@ const Create = () => {
               </div>
             ))}
           </div>
-        </Box>
+        </BoxSmall>
         <Box>
           <div className="BoxContainer">
             {ColorsData.map((color, index) => (
@@ -117,17 +117,18 @@ const Create = () => {
             ))}
           </div>
         </Box>
-        <Box>
-          <code onClick={getCode}>
+        <Box></Box>
+        <CodeBox>
+          <code onClick={getCode} className="BoxContainer">
             export const Button = () ={"> {"}
             <br />
-            &emsp;return {" <"}button className="{color} {borderWidth}{" "}
+            &emsp;return {" <"}button className="py-2 px-4 {color} {borderWidth}{" "}
             {borderColor} {borderRadius} {textColor}"{">"}Button{"<"}/button
             {">"}
             <br />
             {"}"}
           </code>
-        </Box>
+        </CodeBox>
       </div>
     </div>
   );
