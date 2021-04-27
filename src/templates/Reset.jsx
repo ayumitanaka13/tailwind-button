@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import { push } from "connected-react-router";
 import { useDispatch } from "react-redux";
 
 import { resetPassword } from "../reducks/users/operations";
@@ -7,15 +8,11 @@ import { Button, TextInput } from "../components/UI";
 const Reset = () => {
   const dispatch = useDispatch();
 
-  const [email, setEmail] = useState(""),
-    [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
-  const inputEmail = useCallback(
-    (e) => {
-      setEmail(e.target.value);
-    },
-    [setEmail]
-  );
+  const inputEmail = useCallback((e) => {
+    setEmail(e.target.value);
+  }, []);
 
   return (
     <div className="Page">
@@ -28,7 +25,7 @@ const Reset = () => {
             value={email}
             required={true}
             onChange={inputEmail}
-            // placeholder="Email"
+            placeholder="example@mail.com"
           />
           <Button
             type="submit"
@@ -37,6 +34,13 @@ const Reset = () => {
             onClick={() => dispatch(resetPassword(email))}
           />
         </form>
+        <p>Back to Sign In</p>
+        <Button
+          type="button"
+          value="Sign In"
+          button="Sign In"
+          onClick={() => dispatch(push("/signin"))}
+        />
       </div>
     </div>
   );

@@ -2,8 +2,6 @@ import { push } from "connected-react-router";
 import { signInAction, signOutAction } from "./actions";
 import { auth, db, FirebaseTimestamp } from "../../firebase/index";
 
-const usersRef = db.collection("users");
-
 export const listenAuthState = () => {
   return async (dispatch) => {
     return auth.onAuthStateChanged((user) => {
@@ -132,7 +130,7 @@ export const resetPassword = (email) => {
           dispatch(push("/signin"));
         })
         .catch(() => {
-          alert("Error!");
+          alert("The email address is invalid.");
         });
     }
   };
