@@ -3,3 +3,4 @@ export { default as BgColor } from "./BgColor";
 export { default as BorderColor } from "./BorderColor";
 export { default as BorderWidth } from "./BorderWidth";
 export { default as BorderRadius } from "./BorderRadius";
+export { default as TextColor } from "./TextColor";
