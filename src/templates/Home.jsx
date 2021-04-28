@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div className="Page">
       <div className="w-5/6">
-        <h1 style={{ webkitTextStroke: "1px #FFF" }}>
+        <h1 style={{ WebkitTextStroke: "1px #FFF" }}>
           Tailwind Button Generator
         </h1>
         <p className="text-center my-8">

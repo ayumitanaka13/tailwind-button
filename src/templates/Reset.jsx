@@ -17,7 +17,7 @@ const Reset = () => {
   return (
     <div className="Page">
       <div className="w-5/6 lg:w-1/2 bg-white bg-opacity-10 p-8 sm:p-16 rounded-md shadow-md">
-        <h2 style={{ webkitTextStroke: "1px #FFF" }}>Reset Password</h2>
+        <h2 style={{ WebkitTextStroke: "1px #FFF" }}>Reset Password</h2>
         <form action="" className="w-full">
           <TextInput
             type="email"

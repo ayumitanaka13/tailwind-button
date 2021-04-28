@@ -27,7 +27,7 @@ const Signin = () => {
   return (
     <div className="Page">
       <div className="PageContainer">
-        <h2 style={{ webkitTextStroke: "1px #FFF" }}>Sign In</h2>
+        <h2 style={{ WebkitTextStroke: "1px #FFF" }}>Sign In</h2>
         <form action="" className="w-full">
           <TextInput
             type="email"
