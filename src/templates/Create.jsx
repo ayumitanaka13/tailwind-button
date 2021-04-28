@@ -1,9 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { push } from "connected-react-router";
+import { useSelector, useDispatch } from "react-redux";
 
 import Clipboard from "react-clipboard.js";
 
 import { signOut } from "../reducks/users/operations";
+import { getUserName } from "../reducks/users/selectors";
+
 import {
   BgColor,
   BorderColor,
@@ -17,10 +20,12 @@ import {
   BorderWidthData,
   BorderRadiusData,
 } from "../components/data";
-import { Box, BoxSmall, Button, CodeBox } from "../components/UI";
+import { Box, BoxSmall, ButtonSmall, CodeBox } from "../components/UI";
 
 const Create = () => {
   const dispatch = useDispatch();
+  const selector = useSelector((state) => state);
+  const username = getUserName(selector);
 
   const [color, setColor] = useState(""),
     [borderColor, setBorderColor] = useState(""),
@@ -59,7 +64,7 @@ const Create = () => {
     <div className="Page h-full">
       <div className="w-5/6 my-16">
         <h3 className="text-center mb-8">
-          Create Your Tailwind Button Component.
+          Create {username}'s Tailwind Button Component.
         </h3>
         <BoxSmall>
           <TailwindButton
@@ -140,22 +145,47 @@ const Create = () => {
             {"}"}
           </code>
         </CodeBox>
-        {codeRef.current ? (
-          <Clipboard data-clipboard-text={codeRef.current.innerText}>
-            copy
-          </Clipboard>
-        ) : (
-          <Clipboard data-clipboard-text={initialCode}>copy</Clipboard>
-        )}
-        <Button
-          type="submit"
-          value="Sign Out"
-          button="Sign Out"
-          onClick={(e) => {
-            e.preventDefault();
-            dispatch(signOut());
-          }}
-        />
+
+        <div className="w-full flex flex-wrap">
+          <div className="ButtonWrapper">
+            {/* <ButtonSmall
+              button="Copy Code"
+              onClick={() => dispatch(push("/signin/reset"))}
+            /> */}
+            <div className="ButtonSmall flex items-center justify-center">
+              {codeRef.current ? (
+                <Clipboard data-clipboard-text={codeRef.current.innerText}>
+                  Copy Code
+                </Clipboard>
+              ) : (
+                <Clipboard data-clipboard-text={initialCode}>
+                  Copy Code
+                </Clipboard>
+              )}
+            </div>
+          </div>
+          <div className="ButtonWrapper">
+            <ButtonSmall
+              button="Clear All"
+              onClick={() => dispatch(push("/signin/reset"))}
+            />
+          </div>
+          <div className="ButtonWrapper">
+            <ButtonSmall
+              button="Sign Out"
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(signOut());
+              }}
+            />
+          </div>
+          <div className="ButtonWrapper">
+            <ButtonSmall
+              button="Back to Top"
+              onClick={() => dispatch(push("/signin/reset"))}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

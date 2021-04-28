@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { push } from "connected-react-router";
 
 import { Button } from "../components/UI";
-// import { getUserId, getUserName } from "../reducks/users/selectors";
 
 const Home = () => {
   const dispatch = useDispatch();
