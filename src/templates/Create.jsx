@@ -82,9 +82,13 @@ const Create = () => {
         </BoxSmall>
         <Box>
           <div className="BoxContainer">
-            {ColorsData.map((color, index) => (
+            {ColorsData.map((bgColor, index) => (
               <div key={index}>
-                <BgColor value={color} onClick={getColor} className={color} />
+                <BgColor
+                  value={bgColor}
+                  onClick={getColor}
+                  className={bgColor}
+                />
               </div>
             ))}
           </div>
@@ -104,12 +108,12 @@ const Create = () => {
         </BoxSmall>
         <Box>
           <div className="BoxContainer">
-            {ColorsData.map((color, index) => (
+            {ColorsData.map((borderColor, index) => (
               <div key={index}>
                 <BorderColor
-                  value={color}
+                  value={borderColor}
                   onClick={getBorderColor}
-                  className={color}
+                  className={borderColor}
                 />
               </div>
             ))}
@@ -130,12 +134,12 @@ const Create = () => {
         </Box>
         <Box>
           <div className="BoxContainer">
-            {ColorsData.map((color, index) => (
+            {ColorsData.map((textColor, index) => (
               <div key={index}>
                 <TextColor
-                  value={color}
+                  value={textColor}
                   onClick={getTextColor}
-                  className={color}
+                  className={textColor}
                 />
               </div>
             ))}
