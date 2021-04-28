@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import { push } from "connected-react-router";
 import { useSelector, useDispatch } from "react-redux";
 
 import Clipboard from "react-clipboard.js";
@@ -59,11 +58,21 @@ const Create = () => {
   const getTextColor = (e) => {
     setTextColor(e.target.value);
   };
+  const getClear = () => {
+    setColor("");
+    setBorderColor("");
+    setBorderWidth("");
+    setBorderRadius("");
+    setTextColor("");
+  };
+  const isCopied = () => {
+    alert("Copied!");
+  };
 
   return (
-    <div className="Page h-full">
+    <div className="Page h-full" id="top">
       <div className="w-5/6 my-16">
-        <h3 className="text-center mb-8">
+        <h3 className="mb-8" style={{ WebkitTextStroke: "1px #FFF" }}>
           Create {username}'s Tailwind Button Component.
         </h3>
         <BoxSmall>
@@ -132,29 +141,32 @@ const Create = () => {
             ))}
           </div>
         </Box>
-        {/* <Box></Box> */}
         <CodeBox>
           <code className="BoxContainer" ref={codeRef}>
             export const Button = () ={"> {"}
             <br />
-            &emsp;return {" <"}button className="py-2 px-4 {color} {borderWidth}{" "}
-            {borderColor} {borderRadius} {textColor}"{">"}Button
+            &emsp;return {" <"}button className="{color} {borderWidth}{" "}
+            {borderColor} {borderRadius} {textColor} py-2 px-4"{">"}Button
             {"<"}/button
             {">"}
             <br />
             {"}"}
           </code>
         </CodeBox>
-
         <div className="w-full flex flex-wrap">
           <div className="ButtonWrapper">
-            {/* <ButtonSmall
-              button="Copy Code"
-              onClick={() => dispatch(push("/signin/reset"))}
-            /> */}
-            <div className="ButtonSmall flex items-center justify-center">
+            <div
+              className="ButtonSmall flex items-center justify-center"
+              onClick={isCopied}
+            >
               {codeRef.current ? (
-                <Clipboard data-clipboard-text={codeRef.current.innerText}>
+                <Clipboard
+                  data-clipboard-text={`
+                    export const Button = () => { 
+                      return  <button className="${color} ${borderWidth} ${borderColor} ${borderRadius} ${textColor} py-2 px-4">Button</button>
+                    }
+                  `}
+                >
                   Copy Code
                 </Clipboard>
               ) : (
@@ -165,10 +177,7 @@ const Create = () => {
             </div>
           </div>
           <div className="ButtonWrapper">
-            <ButtonSmall
-              button="Clear All"
-              onClick={() => dispatch(push("/signin/reset"))}
-            />
+            <ButtonSmall button="Clear All" onClick={getClear} />
           </div>
           <div className="ButtonWrapper">
             <ButtonSmall
@@ -180,10 +189,9 @@ const Create = () => {
             />
           </div>
           <div className="ButtonWrapper">
-            <ButtonSmall
-              button="Back to Top"
-              onClick={() => dispatch(push("/signin/reset"))}
-            />
+            <a href="#top">
+              <ButtonSmall button="Back to Top" />
+            </a>
           </div>
         </div>
       </div>

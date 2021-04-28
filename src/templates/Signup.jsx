@@ -41,7 +41,7 @@ const Signup = () => {
   return (
     <div className="Page">
       <div className="PageContainer">
-        <h2>Sign Up</h2>
+        <h2 style={{ webkitTextStroke: "1px #FFF" }}>Sign Up</h2>
         <form action="" className="w-full">
           <TextInput
             type="text"
@@ -86,7 +86,7 @@ const Signup = () => {
             }}
           />
         </form>
-        <p>Already registered?</p>
+        <label>Already registered?</label>
         <Button
           type="button"
           value="Sign In"

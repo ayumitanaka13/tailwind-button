@@ -112,7 +112,7 @@ export const signOut = () => {
   return async (dispatch) => {
     auth.signOut().then(() => {
       dispatch(signOutAction());
-      dispatch(push("/signin"));
+      dispatch(push("/"));
     });
   };
 };
@@ -129,7 +129,8 @@ export const resetPassword = (email) => {
           alert("Sent email to reset your password.");
           dispatch(push("/signin"));
         })
-        .catch(() => {
+        .catch((err) => {
+          console.log(err);
           alert("The email address is invalid.");
         });
     }

@@ -10,10 +10,10 @@
     @apply text-6xl sm:text-8xl xl:text-9xl text-transparent text-center;
   }
   h2 {
-    @apply text-3xl sm:text-4xl xl:text-5xl text-center;
+    @apply text-3xl sm:text-4xl xl:text-6xl text-transparent text-center;
   }
   h3 {
-    @apply text-2xl sm:text-3xl xl:text-4xl;
+    @apply text-2xl sm:text-3xl xl:text-5xl text-transparent text-center;
   }
   h4 {
     @apply text-xl sm:text-2xl xl:text-3xl;
@@ -54,7 +54,7 @@
     @apply h-10 sm:h-12 w-full bg-transparent hover:bg-white hover:bg-opacity-10 border-t border-gray-300 rounded-md shadow focus:shadow-none outline-none duration-300 my-2;
   }
   .ButtonSmall {
-    @apply h-10 sm:h-12 w-full bg-green-500 bg-opacity-20 hover:bg-opacity-30 border-t border-gray-300 rounded-md shadow focus:shadow-none outline-none duration-300 my-2;
+    @apply h-10 sm:h-12 w-full bg-green-500 bg-opacity-20 hover:bg-opacity-30 border-t border-gray-200 rounded-md shadow focus:shadow-none outline-none duration-300 my-2;
   }
   .Box {
     @apply h-60 sm:h-36 2xl:h-24 w-full flex items-center justify-center bg-white bg-opacity-20 hover:bg-opacity-30 rounded-md shadow-sm duration-300 my-2;
@@ -73,6 +73,6 @@
     @apply flex flex-wrap justify-center px-4 sm:px-8;
   }
   .ButtonWrapper {
-    @apply w-1/2 lg:w-1/4 px-1 border;
+    @apply w-1/2 lg:w-1/4 px-1;
   }
 }

@@ -27,7 +27,7 @@ const Signin = () => {
   return (
     <div className="Page">
       <div className="PageContainer">
-        <h2>Sign In</h2>
+        <h2 style={{ webkitTextStroke: "1px #FFF" }}>Sign In</h2>
         <form action="" className="w-full">
           <TextInput
             type="email"
@@ -56,14 +56,14 @@ const Signin = () => {
             }}
           />
         </form>
-        <p>New user?</p>
+        <label>New user?</label>
         <Button
           type="button"
           value="Sign Up"
           button="Sign Up"
           onClick={() => dispatch(push("/signup"))}
         />
-        <p>Forgot password?</p>
+        <label>Forgot password?</label>
         <Button
           type="button"
           value="Reset"
