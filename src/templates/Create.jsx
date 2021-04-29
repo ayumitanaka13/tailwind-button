@@ -75,7 +75,7 @@ const Create = () => {
         <h3 className="mb-8" style={{ WebkitTextStroke: "1px #FFF" }}>
           Create {username}'s Tailwind Button Component.
         </h3>
-        <BoxSmall>
+        <BoxSmall className="sticky top-0 z-50">
           <TailwindButton
             className={`${color} ${borderWidth} ${borderColor} ${borderRadius} ${textColor}`}
           />
